@@ -1,0 +1,146 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, MessageCircle, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
+
+const products = [
+  {
+    id: 1,
+    name: "Handmade Jute Bag",
+    image: "https://via.placeholder.com/300x200",
+    description: "Eco-friendly jute bag with traditional prints."
+  },
+  {
+    id: 2,
+    name: "Decorative Wall Hanging",
+    image: "https://via.placeholder.com/300x200",
+    description: "Beautifully crafted wall decor from natural materials."
+  },
+  {
+    id: 3,
+    name: "Bamboo Planter",
+    image: "https://via.placeholder.com/300x200",
+    description: "Hand-painted bamboo planter for your home garden."
+  },
+  {
+    id: 4,
+    name: "Terracotta Diyas",
+    image: "https://via.placeholder.com/300x200",
+    description: "Decorative diyas made from natural clay and hand-painted."
+  },
+  {
+    id: 5,
+    name: "Macramé Wall Art",
+    image: "https://via.placeholder.com/300x200",
+    description: "Bohemian-style macramé decor piece for cozy corners."
+  },
+  {
+    id: 6,
+    name: "Handwoven Coasters",
+    image: "https://via.placeholder.com/300x200",
+    description: "Set of colorful coasters woven from natural fibers."
+  }
+];
+
+export default function HariharCrafts() {
+  return (
+    <div className="bg-yellow-50 text-gray-800 min-h-screen font-sans">
+      {/* Landing Page */}
+      <section className="text-center py-10 bg-gradient-to-r from-yellow-300 to-pink-300">
+        <motion.img
+          src="/logo.png" // Replace with your actual logo path
+          alt="Harihar Crafts Logo"
+          className="mx-auto w-24 h-24 mb-4 rounded-full shadow-lg"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        />
+        <motion.h1
+          className="text-4xl font-bold mb-4"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          Welcome to Harihar Crafts
+        </motion.h1>
+        <p className="text-lg max-w-xl mx-auto">
+          Discover vibrant, handmade creations crafted with love and tradition.
+        </p>
+      </section>
+
+      {/* Product Listing */}
+      <section className="px-6 py-10 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6">
+        {products.map((product) => (
+          <motion.div
+            key={product.id}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card className="rounded-2xl shadow-lg bg-white hover:shadow-2xl transition">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-48 object-cover rounded-t-2xl"
+              />
+              <CardContent className="p-4">
+                <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+                <p className="text-sm mb-4">{product.description}</p>
+                <Button className="bg-pink-400 text-white hover:bg-pink-500">
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* Contact Section */}
+      <section className="bg-pink-100 py-10 text-center">
+        <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
+        <p className="mb-6">Got questions or want to place an order? Reach out to us!</p>
+        <form className="max-w-md mx-auto space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full p-2 border rounded-xl"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="w-full p-2 border rounded-xl"
+          />
+          <textarea
+            placeholder="Your Message"
+            className="w-full p-2 border rounded-xl"
+            rows="4"
+          ></textarea>
+          <Button type="submit" className="bg-yellow-400 text-white hover:bg-yellow-500">
+            <Mail className="w-4 h-4 mr-2" /> Send Message
+          </Button>
+        </form>
+        <div className="mt-6 space-y-4">
+          <a
+            href="https://wa.me/919999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-green-500 text-white hover:bg-green-600">
+              <MessageCircle className="w-4 h-4 mr-2" /> Chat on WhatsApp
+            </Button>
+          </a>
+          <a
+            href="https://www.instagram.com/hariharcrafts"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white hover:opacity-90">
+              <Instagram className="w-4 h-4 mr-2" /> Follow on Instagram
+            </Button>
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}
